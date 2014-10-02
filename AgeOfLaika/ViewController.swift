@@ -22,15 +22,23 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
      
-    @IBAction func convertButtonPressed(sender: UIButton)
-    {
-        var yearsFromHumanYearsTextField = enterHumanYearsTextField.text.toInt()!
-        let conversionConstant = 7
+    @IBAction func convertButtonPressed(sender: UIButton) {
+        
+        let yearsFromHumanYearsTextField = enterHumanYearsTextField.text.toInt()!
         convertedDogYearsLabel.hidden = false
-        convertedDogYearsLabel.text = "Your " + "\(yearsFromHumanYearsTextField)" + "-year-old dog is " + "\(yearsFromHumanYearsTextField * conversionConstant)"
+        let doubleYearsFromHumanYearsTextField = Double (yearsFromHumanYearsTextField)
+        
+        if yearsFromHumanYearsTextField <= 2 {
+            convertedDogYearsLabel.text = "Your " + "\(yearsFromHumanYearsTextField)" + " year old dog is " + "\(doubleYearsFromHumanYearsTextField * 10.5)"
+            
+        }
+            
+        else {
+            convertedDogYearsLabel.text = "Your " + "\(yearsFromHumanYearsTextField)" + " year old dog is " + "\(((yearsFromHumanYearsTextField - 2) * 4 ) + 21 )"
+        }
+        
         enterHumanYearsTextField.text = ""
         enterHumanYearsTextField.resignFirstResponder()
-        
     }
 
 }
